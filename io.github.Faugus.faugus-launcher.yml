@@ -71,7 +71,6 @@ modules:
 
     modules:
       - name: umu
-        buildsystem: simple
         sources:
           - type: archive
             archive-type: tar
