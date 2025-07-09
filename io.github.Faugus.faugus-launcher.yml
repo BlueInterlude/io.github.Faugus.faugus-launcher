@@ -71,7 +71,7 @@ modules:
 
     modules:
       - name: umu
-        buildsystem: meson
+        buildsystem: simple
         sources:
           - type: archive
             archive-type: tar
