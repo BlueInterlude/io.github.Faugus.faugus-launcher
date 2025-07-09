@@ -70,21 +70,14 @@ modules:
         sha256: a8d074ed1d8d5a3dda60e8064f10ecf0f510a310da5800baa67a8f1266098827
 
     modules:
-      - name: umu
+      - name: umu-run
         buildsystem: simple
         build-commands:
-          - install -Dm755 umu -t ${FLATPAK_DEST}/bin
+          - install -Dm755 umu-run /app/bin/umu-run
         sources:
-          - type: archive
-            archive-type: tar
-            url: https://github.com/Open-Wine-Components/umu-launcher/releases/download/1.2.7/umu-launcher-1.2.7-zipapp.tar
-            sha256: 7e6bee1cb651c88a542d5dd45a2b338878a9c53a010ab8945904d419b26a394d
-            x-checker-data:
-              type: json
-              url: https://api.github.com/repos/Open-Wine-Components/umu-launcher/releases/latest
-              version-query: .tag_name | sub("^v"; "")
-              timestamp-query: .tag_name
-              url-query: .assets[] | select(.name | test(\"^umu-launcher.*-zipapp.tar$\")).browser_download_url
+          - type: file
+            url: https://github.com/Faugus/components/releases/download/v1.0.0/umu-run
+            sha256: 5d4f9aac8a94f214dca61b2abe948288af556d1875425b6f7b234265567823dc
       - name: imagemagick
         buildsystem: autotools
         config-opts:
