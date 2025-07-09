@@ -71,8 +71,7 @@ modules:
 
     modules:
       - name: umu
-        make-install-args: 
-          - PREFIX=${FLATPAK_DEST}/bin
+        buildsystem: meson
         sources:
           - type: archive
             archive-type: tar
