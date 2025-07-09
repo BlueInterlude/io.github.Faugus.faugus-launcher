@@ -70,10 +70,9 @@ modules:
         sha256: a8d074ed1d8d5a3dda60e8064f10ecf0f510a310da5800baa67a8f1266098827
 
     modules:
-      - name: umu-run
-        buildsystem: simple
-        build-commands:
-          - install -Dm755 umu-run /app/bin/umu-run
+      - name: umu
+        make-install-args: 
+          - PREFIX=${FLATPAK_DEST}/bin
         sources:
           - type: archive
             archive-type: tar
