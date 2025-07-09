@@ -70,6 +70,21 @@ modules:
         sha256: a8d074ed1d8d5a3dda60e8064f10ecf0f510a310da5800baa67a8f1266098827
 
     modules:
+      - name: umu-run
+        buildsystem: simple
+        build-commands:
+          - install -Dm755 umu-run /app/bin/umu-run
+        sources:
+          - type: archive
+            archive-type: tar
+            url: https://api.github.com/repos/Open-Wine-Components/umu-launcher/tarball/1.2.7
+            sha256: faf182c45e75a1a55cd7323e6abff938df07fc105fc7620385a73085652d324c
+            x-checker-data:
+              type: json
+              url: https://api.github.com/repos/Open-Wine-Components/umu-launcher/releases/latest
+              version-query: .tag_name | sub("^v"; "")
+              timestamp-query: .published_at
+              url-query: .tarball_url
       - name: imagemagick
         buildsystem: autotools
         config-opts:
