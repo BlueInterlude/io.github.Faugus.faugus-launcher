@@ -71,8 +71,9 @@ modules:
 
     modules:
       - name: umu
-        make-install-args: 
-          - PREFIX=${FLATPAK_DEST}
+        buildsystem: simple
+        build-commands:
+          - install -Dm755 umu -t ${FLATPAK_DEST}/bin
         sources:
           - type: archive
             archive-type: tar
