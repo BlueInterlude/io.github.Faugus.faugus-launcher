@@ -71,17 +71,20 @@ modules:
 
     modules:
       - name: umu
+        buildsystem: simple
+        build-commands:
+          - install -Dm755 umu ${FLATPAK_DEST}
         sources:
           - type: archive
             archive-type: tar
-            url: https://api.github.com/repos/Open-Wine-Components/umu-launcher/tarball/1.2.7
-            sha256: faf182c45e75a1a55cd7323e6abff938df07fc105fc7620385a73085652d324c
+            url: https://github.com/Open-Wine-Components/umu-launcher/releases/download/1.2.7/umu-launcher-1.2.7-zipapp.tar
+            sha256: 7e6bee1cb651c88a542d5dd45a2b338878a9c53a010ab8945904d419b26a394d
             x-checker-data:
               type: json
               url: https://api.github.com/repos/Open-Wine-Components/umu-launcher/releases/latest
               version-query: .tag_name | sub("^v"; "")
-              timestamp-query: .published_at
-              url-query: .tarball_url
+              timestamp-query: .tag_name
+              url-query: .assets[] | select(.name | test(\"^umu-launcher.*-zipapp.tar$\")).browser_download_url
       - name: imagemagick
         buildsystem: autotools
         config-opts:
